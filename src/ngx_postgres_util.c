@@ -183,7 +183,7 @@ ngx_postgres_upstream_next(ngx_http_request_t *r,
         status = 0;
 
     } else {
-        switch(ft_type) {
+        switch (ft_type) {
 
         case NGX_HTTP_UPSTREAM_FT_TIMEOUT:
             status = NGX_HTTP_GATEWAY_TIME_OUT;

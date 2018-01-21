@@ -33,11 +33,12 @@
 #include "ngx_postgres_module.h"
 
 
-ngx_int_t  ngx_postgres_rewrite(ngx_http_request_t *,
-               ngx_postgres_rewrite_conf_t *);
-ngx_int_t  ngx_postgres_rewrite_changes(ngx_http_request_t *,
-               ngx_postgres_rewrite_conf_t *);
+ngx_int_t ngx_postgres_rewrite(ngx_http_request_t *,
+    ngx_postgres_rewrite_conf_t *);
+ngx_int_t ngx_postgres_rewrite_changes(ngx_http_request_t *,
+    ngx_postgres_rewrite_conf_t *);
 ngx_int_t  ngx_postgres_rewrite_rows(ngx_http_request_t *,
-               ngx_postgres_rewrite_conf_t *);
+    ngx_postgres_rewrite_conf_t *);
+
 
 #endif /* _NGX_POSTGRES_REWRITE_H_ */

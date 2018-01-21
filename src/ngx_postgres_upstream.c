@@ -72,7 +72,7 @@ ngx_postgres_upstream_init(ngx_conf_t *cf, ngx_http_upstream_srv_conf_t *uscf)
     }
 
     peers = ngx_pcalloc(cf->pool, sizeof(ngx_postgres_upstream_peers_t)
-            + sizeof(ngx_postgres_upstream_peer_t) * (n - 1));
+                        + sizeof(ngx_postgres_upstream_peer_t) * (n - 1));
 
     if (peers == NULL) {
         dd("returning NGX_ERROR");
@@ -511,7 +511,7 @@ ngx_postgres_upstream_free_peer(ngx_peer_connection_t *pc,
         dd("free connection to PostgreSQL database");
 
         ngx_postgres_upstream_free_connection(pc->log, pc->connection,
-                pgdt->pgconn, pgscf);
+                                              pgdt->pgconn, pgscf);
 
         pgdt->pgconn = NULL;
         pc->connection = NULL;
@@ -550,7 +550,8 @@ ngx_postgres_upstream_free_connection(ngx_log_t *log, ngx_connection_t *c,
         }
 
         if (ngx_del_conn) {
-           ngx_del_conn(c, NGX_CLOSE_EVENT);
+            ngx_del_conn(c, NGX_CLOSE_EVENT);
+
         } else {
             if (rev->active || rev->disabled) {
                 ngx_del_event(rev, NGX_READ_EVENT, NGX_CLOSE_EVENT);

@@ -44,6 +44,7 @@ typedef enum {
     state_db_idle
 } ngx_postgres_state_t;
 
+
 typedef struct {
     ngx_postgres_upstream_srv_conf_t  *srv_conf;
     ngx_postgres_loc_conf_t           *loc_conf;
@@ -58,17 +59,17 @@ typedef struct {
 } ngx_postgres_upstream_peer_data_t;
 
 
-ngx_int_t   ngx_postgres_upstream_init(ngx_conf_t *,
-                ngx_http_upstream_srv_conf_t *);
+ngx_int_t ngx_postgres_upstream_init(ngx_conf_t *,
+    ngx_http_upstream_srv_conf_t *);
 ngx_int_t   ngx_postgres_upstream_init_peer(ngx_http_request_t *,
-                ngx_http_upstream_srv_conf_t *);
+    ngx_http_upstream_srv_conf_t *);
 ngx_int_t   ngx_postgres_upstream_get_peer(ngx_peer_connection_t *, void *);
-void        ngx_postgres_upstream_free_peer(ngx_peer_connection_t *, void *,
-                ngx_uint_t);
-ngx_flag_t  ngx_postgres_upstream_is_my_peer(const ngx_peer_connection_t *);
-void        ngx_postgres_upstream_free_connection(ngx_log_t *,
-                ngx_connection_t *, PGconn *,
-                ngx_postgres_upstream_srv_conf_t *);
+void ngx_postgres_upstream_free_peer(ngx_peer_connection_t *, void *,
+    ngx_uint_t);
+ngx_flag_t ngx_postgres_upstream_is_my_peer(const ngx_peer_connection_t *);
+void ngx_postgres_upstream_free_connection(ngx_log_t *,
+    ngx_connection_t *, PGconn *,
+    ngx_postgres_upstream_srv_conf_t *);
 
 
 #endif /* _NGX_HTTP_UPSTREAM_POSTGRES_H_ */

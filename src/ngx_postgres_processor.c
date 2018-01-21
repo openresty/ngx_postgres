@@ -145,7 +145,8 @@ ngx_postgres_upstream_connect(ngx_http_request_t *r, ngx_connection_t *pgxc,
                            "postgres: re-polling while connecting, rc:%d",
                            (int) pgrc);
 
-            if (pgrc == PGRES_POLLING_READING || pgrc == PGRES_POLLING_WRITING)
+            if (pgrc == PGRES_POLLING_READING
+                || pgrc == PGRES_POLLING_WRITING)
             {
                 ngx_log_debug1(NGX_LOG_DEBUG_HTTP, pgxc->log, 0,
                                "postgres: busy while connecting, rc:%d",

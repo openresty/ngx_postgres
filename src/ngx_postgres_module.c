@@ -174,21 +174,21 @@ ngx_module_t ngx_postgres_module = {
 };
 
 ngx_conf_bitmask_t ngx_postgres_http_methods[] = {
-   { ngx_string("GET"),       NGX_HTTP_GET },
-   { ngx_string("HEAD"),      NGX_HTTP_HEAD },
-   { ngx_string("POST"),      NGX_HTTP_POST },
-   { ngx_string("PUT"),       NGX_HTTP_PUT },
-   { ngx_string("DELETE"),    NGX_HTTP_DELETE },
-   { ngx_string("MKCOL"),     NGX_HTTP_MKCOL },
-   { ngx_string("COPY"),      NGX_HTTP_COPY },
-   { ngx_string("MOVE"),      NGX_HTTP_MOVE },
-   { ngx_string("OPTIONS"),   NGX_HTTP_OPTIONS },
-   { ngx_string("PROPFIND"),  NGX_HTTP_PROPFIND },
-   { ngx_string("PROPPATCH"), NGX_HTTP_PROPPATCH },
-   { ngx_string("LOCK"),      NGX_HTTP_LOCK },
-   { ngx_string("UNLOCK"),    NGX_HTTP_UNLOCK },
+    { ngx_string("GET"),       NGX_HTTP_GET },
+    { ngx_string("HEAD"),      NGX_HTTP_HEAD },
+    { ngx_string("POST"),      NGX_HTTP_POST },
+    { ngx_string("PUT"),       NGX_HTTP_PUT },
+    { ngx_string("DELETE"),    NGX_HTTP_DELETE },
+    { ngx_string("MKCOL"),     NGX_HTTP_MKCOL },
+    { ngx_string("COPY"),      NGX_HTTP_COPY },
+    { ngx_string("MOVE"),      NGX_HTTP_MOVE },
+    { ngx_string("OPTIONS"),   NGX_HTTP_OPTIONS },
+    { ngx_string("PROPFIND"),  NGX_HTTP_PROPFIND },
+    { ngx_string("PROPPATCH"), NGX_HTTP_PROPPATCH },
+    { ngx_string("LOCK"),      NGX_HTTP_LOCK },
+    { ngx_string("UNLOCK"),    NGX_HTTP_UNLOCK },
 #if defined(nginx_version) && (nginx_version >= 8041)
-   { ngx_string("PATCH"),     NGX_HTTP_PATCH },
+    { ngx_string("PATCH"),     NGX_HTTP_PATCH },
 #endif
     { ngx_null_string, 0 }
 };
@@ -448,7 +448,7 @@ ngx_postgres_conf_server(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
     for (i = 2; i < cf->args->nelts; i++) {
 
         if (ngx_strncmp(value[i].data, "dbname=", sizeof("dbname=") - 1)
-                == 0)
+            == 0)
         {
             pgs->dbname.len = value[i].len - (sizeof("dbname=") - 1);
             pgs->dbname.data = &value[i].data[sizeof("dbname=") - 1];
@@ -456,7 +456,7 @@ ngx_postgres_conf_server(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
         }
 
         if (ngx_strncmp(value[i].data, "user=", sizeof("user=") - 1)
-                == 0)
+            == 0)
         {
             pgs->user.len = value[i].len - (sizeof("user=") - 1);
             pgs->user.data = &value[i].data[sizeof("user=") - 1];
@@ -464,7 +464,7 @@ ngx_postgres_conf_server(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
         }
 
         if (ngx_strncmp(value[i].data, "password=", sizeof("password=") - 1)
-                == 0)
+            == 0)
         {
             pgs->password.len = value[i].len - (sizeof("password=") - 1);
             pgs->password.data = &value[i].data[sizeof("password=") - 1];
@@ -511,7 +511,7 @@ ngx_postgres_conf_keepalive(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
     for (i = 1; i < cf->args->nelts; i++) {
 
         if (ngx_strncmp(value[i].data, "max=", sizeof("max=") - 1)
-                == 0)
+            == 0)
         {
             value[i].len = value[i].len - (sizeof("max=") - 1);
             value[i].data = &value[i].data[sizeof("max=") - 1];
@@ -533,7 +533,7 @@ ngx_postgres_conf_keepalive(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
         }
 
         if (ngx_strncmp(value[i].data, "mode=", sizeof("mode=") - 1)
-                == 0)
+            == 0)
         {
             value[i].len = value[i].len - (sizeof("mode=") - 1);
             value[i].data = &value[i].data[sizeof("mode=") - 1];
@@ -562,7 +562,7 @@ ngx_postgres_conf_keepalive(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
         }
 
         if (ngx_strncmp(value[i].data, "overflow=", sizeof("overflow=") - 1)
-                == 0)
+            == 0)
         {
             value[i].len = value[i].len - (sizeof("overflow=") - 1);
             value[i].data = &value[i].data[sizeof("overflow=") - 1];

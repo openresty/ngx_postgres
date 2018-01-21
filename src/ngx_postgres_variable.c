@@ -64,6 +64,7 @@ ngx_postgres_variable_columns(ngx_http_request_t *r,
     return NGX_OK;
 }
 
+
 ngx_int_t
 ngx_postgres_variable_rows(ngx_http_request_t *r,
     ngx_http_variable_value_t *v, uintptr_t data)
@@ -94,6 +95,7 @@ ngx_postgres_variable_rows(ngx_http_request_t *r,
     dd("returning NGX_OK");
     return NGX_OK;
 }
+
 
 ngx_int_t
 ngx_postgres_variable_affected(ngx_http_request_t *r,
@@ -126,6 +128,7 @@ ngx_postgres_variable_affected(ngx_http_request_t *r,
     return NGX_OK;
 }
 
+
 ngx_int_t
 ngx_postgres_variable_query(ngx_http_request_t *r,
     ngx_http_variable_value_t *v, uintptr_t data)
@@ -152,6 +155,7 @@ ngx_postgres_variable_query(ngx_http_request_t *r,
     return NGX_OK;
 }
 
+
 ngx_int_t
 ngx_postgres_variable_get_custom(ngx_http_request_t *r,
     ngx_http_variable_value_t *v, uintptr_t data)
@@ -161,7 +165,7 @@ ngx_postgres_variable_get_custom(ngx_http_request_t *r,
     ngx_str_t                *store;
 
     dd("entering: \"$%.*s\"", (int) pgvar->var->name.len,
-                              pgvar->var->name.data);
+       pgvar->var->name.data);
 
     pgctx = ngx_http_get_module_ctx(r, ngx_postgres_module);
 
@@ -190,6 +194,7 @@ ngx_postgres_variable_get_custom(ngx_http_request_t *r,
     return NGX_OK;
 }
 
+
 ngx_str_t
 ngx_postgres_variable_set_custom(ngx_http_request_t *r, PGresult *res,
     ngx_postgres_variable_t *pgvar)
@@ -200,7 +205,7 @@ ngx_postgres_variable_set_custom(ngx_http_request_t *r, PGresult *res,
     ngx_str_t                  value = ngx_null_string;
 
     dd("entering: \"$%.*s\"", (int) pgvar->var->name.len,
-                              pgvar->var->name.data);
+       pgvar->var->name.data);
 
     col_count = PQnfields(res);
     row_count = PQntuples(res);
