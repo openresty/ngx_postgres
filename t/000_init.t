@@ -27,7 +27,7 @@ __DATA__
 --- config
     location = /init {
         postgres_pass   database;
-        postgres_query  "DROP TABLE cats";
+        postgres_query  "DROP TABLE IF EXISTS cats";
         error_page 500  = /ignore;
     }
 

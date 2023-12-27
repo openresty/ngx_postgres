@@ -14,6 +14,7 @@ ngx-build $force $version \
             --with-ld-opt="-L$PCRE_LIB -L$OPENSSL_LIB -Wl,-rpath,$PCRE_LIB:$LIBDRIZZLE_LIB:$OPENSSL_LIB" \
             --with-http_ssl_module \
             --with-ipv6 \
+            --with-http_auth_request_module \
           --add-module=$root/../echo-nginx-module \
           --add-module=$root/../lua-nginx-module \
           --add-module=$root/../eval-nginx-module \
