@@ -23,7 +23,6 @@ ngx-build $force $version \
           --add-module=$root/../set-misc-nginx-module \
           --add-module=$root/../form-input-nginx-module \
           --add-module=$root/../coolkit-nginx-module \
-          --add-module=$home/work/nginx/ngx_http_auth_request_module-0.2/ \
           --add-module=$root $opts \
           --with-select_module \
           --with-poll_module \
