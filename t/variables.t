@@ -46,9 +46,9 @@ X-Test: test
 "".              # driver errstr data
 "\x{00}\x{00}\x{00}\x{00}\x{00}\x{00}\x{00}\x{00}".  # rows affected
 "\x{00}\x{00}\x{00}\x{00}\x{00}\x{00}\x{00}\x{00}".  # insert id
-"\x{01}\x{00}".  # col count
-"\x{00}\x{80}".  # std col type (unknown/str)
-"\x{c1}\x{02}".  # driver col type
+"\x{01}\x{00}\x{06}".  # col count
+"\x{80}".  # std col type (unknown/str)
+"\x{19}\x{00}".  # driver col type
 "\x{04}\x{00}".  # col name len
 "echo".          # col name data
 "\x{01}".        # valid row flag
