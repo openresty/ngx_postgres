@@ -166,6 +166,13 @@ ngx_postgres_upstream_init_peer(ngx_http_request_t *r,
     u->peer.get = ngx_postgres_upstream_get_peer;
     u->peer.free = ngx_postgres_upstream_free_peer;
 
+    /* Stash pgdt in the module ctx so handlers can recover it even if
+     * another module (e.g. the standard upstream keepalive, which is
+     * implicit in nginx 1.29.7+) wraps u->peer.data afterwards. */
+    if (pgctx != NULL) {
+        pgctx->peer_data = pgdt;
+    }
+
     if (pglcf->query.methods_set & r->method) {
         /* method-specific query */
         dd("using method-specific query");

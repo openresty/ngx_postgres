@@ -45,6 +45,10 @@ typedef struct {
 } ngx_postgres_rewrite_loc_conf_t;
 
 
+/* Returns the postgres peer-data pointer (ngx_postgres_upstream_peer_data_t *).
+ * Returns void * to avoid pulling ngx_postgres_upstream.h here. */
+void *ngx_postgres_get_peer_data(ngx_http_request_t *);
+
 void ngx_postgres_upstream_finalize_request(ngx_http_request_t *,
     ngx_http_upstream_t *, ngx_int_t);
 void ngx_postgres_upstream_next(ngx_http_request_t *,

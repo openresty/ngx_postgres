@@ -187,6 +187,11 @@ typedef struct {
     ngx_str_t                           var_query;
     ngx_array_t                        *variables;
     ngx_int_t                           status;
+    /* original postgres peer data; saved here so handlers can find it
+     * even when r->upstream->peer.data has been wrapped by another
+     * module such as the standard upstream keepalive (which became
+     * implicit for explicit upstreams in nginx 1.29.7) */
+    void                               *peer_data;
 } ngx_postgres_ctx_t;
 
 

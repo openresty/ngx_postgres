@@ -49,9 +49,9 @@ ngx_postgres_process_events(ngx_http_request_t *r)
 
     u = r->upstream;
     pgxc = u->peer.connection;
-    pgdt = u->peer.data;
+    pgdt = ngx_postgres_get_peer_data(r);
 
-    if (!ngx_postgres_upstream_is_my_peer(&u->peer)) {
+    if (pgdt == NULL) {
         ngx_log_error(NGX_LOG_ERR, pgxc->log, 0,
                       "postgres: trying to connect to something that"
                       " is not PostgreSQL database");

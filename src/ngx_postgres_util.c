@@ -32,7 +32,26 @@
 #include <nginx.h>
 
 #include "ngx_postgres_ddebug.h"
+#include "ngx_postgres_module.h"
 #include "ngx_postgres_util.h"
+
+
+void *
+ngx_postgres_get_peer_data(ngx_http_request_t *r)
+{
+    ngx_postgres_ctx_t  *pgctx;
+
+    /* Prefer the ctx-saved pointer because r->upstream->peer.data may have
+     * been wrapped by the standard upstream keepalive (implicit since
+     * nginx 1.29.7) or by another balancer module. Fall back to peer.data
+     * for the rare case where the ctx is missing. */
+    pgctx = ngx_http_get_module_ctx(r, ngx_postgres_module);
+    if (pgctx != NULL && pgctx->peer_data != NULL) {
+        return pgctx->peer_data;
+    }
+
+    return r->upstream ? r->upstream->peer.data : NULL;
+}
 
 
 /*
