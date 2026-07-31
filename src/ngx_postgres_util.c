@@ -375,6 +375,9 @@ ngx_postgres_rewrite_value(ngx_conf_t *cf, ngx_postgres_rewrite_loc_conf_t *lcf,
     ngx_http_script_compile_t              sc;
     ngx_http_script_value_code_t          *val;
     ngx_http_script_complex_value_code_t  *complex;
+#if (nginx_version >= 1031003)
+    ngx_http_script_complex_value_end_code_t *complex_end;
+#endif
 
     n = ngx_http_script_variables_count(value);
 
@@ -420,6 +423,17 @@ ngx_postgres_rewrite_value(ngx_conf_t *cf, ngx_postgres_rewrite_loc_conf_t *lcf,
     if (ngx_http_script_compile(&sc) != NGX_OK) {
         return NGX_CONF_ERROR;
     }
+
+#if (nginx_version >= 1031003)
+    complex_end = ngx_http_script_add_code(lcf->codes,
+                              sizeof(ngx_http_script_complex_value_end_code_t),
+                              &complex);
+    if (complex_end == NULL) {
+        return NGX_CONF_ERROR;
+    }
+
+    complex_end->code = ngx_http_script_complex_value_end_code;
+#endif
 
     return NGX_CONF_OK;
 }
